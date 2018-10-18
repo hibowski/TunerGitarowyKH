@@ -1,0 +1,20 @@
+{
+  "profiles": [{
+    "name":"gitara",
+    "pitchIndexes": [
+      7,
+      12,
+      17,
+      22,
+      26,
+      31
+    ]},{
+    "name":"ukulele",
+    "pitchIndexes": [
+      34,
+      27,
+      31,
+      36
+    ]}
+  ]
+}

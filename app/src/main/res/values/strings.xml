@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tuner Gitarowy</string>
+    <string name="title_activity_tuner">TunerActivity</string>
+    <string name="title_activity_profile_selector">Wybrór Profilu</string>
+    <string name="title_profile_list">Profile</string>
+    <string name="title_profile_detail">profile Detail</string>
+    <string name="zmie_warto">zmień wartość struny</string>
+</resources>
