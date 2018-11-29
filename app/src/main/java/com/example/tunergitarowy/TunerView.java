@@ -3,11 +3,13 @@ package com.example.tunergitarowy;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.support.v4.content.ContextCompat;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.graphics.Paint;
 import android.text.TextPaint;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import pl.pawelkleczkowski.customgauge.CustomGauge;
@@ -57,11 +59,18 @@ public class TunerView extends View {
         Log.e(LOG_TAG, "TunerView class initialized!");
     }
 
+
     @Override
     protected void onDraw(Canvas canvas) {
         // TODO: Rysowanie interfejsu
 
-
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE); // the results will be higher than using the activity context object or the getWindowManager() shortcut
+        wm.getDefaultDisplay().getMetrics(displayMetrics);
+        int screenWidth = displayMetrics.widthPixels;
+        int screenHeight = displayMetrics.heightPixels;
+        int lowerResValue = Math.min(screenHeight, screenWidth);
+        mTextPaint.setTextSize((float)(lowerResValue*0.03));
         super.onDraw(canvas);
 
         CustomGauge gauge1 = ((TunerActivity) getContext()).findViewById(R.id.gauge1);
@@ -83,26 +92,27 @@ public class TunerView extends View {
             gaugeText.setText(Utils.pitchLetterFromIndex(Utils.frequencyToPitchIndex((float) freq)));
             range = Utils.pitchIndexToFrequency(Utils.frequencyToPitchIndex((float) freq));
             gauge1.setValue(50 - (1000 - ((int) ((freq / range) * 1000))));
-            canvas.drawText(String.format("Obecna częstotliwość: %f Hz", freq), 20, 420, this.mTextPaint);
-            canvas.drawText(String.format("Częstotliwość docelowa dźwięku: %f Hz", range), 20, 300, this.mTextPaint);
+            canvas.drawText(String.format("Obecna częstotliwość: %f Hz", freq), (float)(0.02 * screenWidth), (float)(0.05 * screenHeight), this.mTextPaint);
+            canvas.drawText(String.format("Częstotliwość docelowa dźwięku: %f Hz", range), (float)(0.02 * screenWidth), (float)(0.1 * screenHeight), this.mTextPaint);
+
+
         }
         else{
                 gaugeText.setText(pitchLetterFromIndex(pitchIndex));
-            canvas.drawText(String.format("Częstotliwość docelowa: %f Hz", range), 20, 300, this.mTextPaint);
-            canvas.drawText(String.format("Obecna częstotliwość: %f Hz", freq), 20, 420, this.mTextPaint);
+            canvas.drawText(String.format("Częstotliwość docelowa: %f Hz", range), (float)(0.02 * screenWidth), (float)(0.05 * screenHeight), this.mTextPaint);
+            canvas.drawText(String.format("Obecna częstotliwość: %f Hz", freq), (float)(0.02 * screenWidth), (float)(0.1 * screenHeight), this.mTextPaint);
 
 
             if (freq < range * 1.05 && freq > range * 0.95) {
-                canvas.drawCircle(40, 470, 25, this.mCircleGoodPaint);
+                canvas.drawCircle((float)(0.05 * screenWidth), (float)(0.2 * screenHeight), (float)(0.01 * screenHeight), this.mCircleGoodPaint);
             } else {
-                canvas.drawCircle(40, 470, 25, this.mCircleBadPaint);
+                canvas.drawCircle((float)(0.05 * screenWidth), (float)(0.2 * screenHeight), (float)(0.01 * screenHeight), this.mCircleBadPaint);
                 if (freq > range) {
-                    canvas.drawText(String.format("Za wysoka częstotliwość"), 20, 550, this.mTextPaint);
+                    canvas.drawText(String.format("Za wysoka częstotliwość"), (float)(0.02 * screenWidth), (float)(0.15 * screenHeight), this.mTextPaint);
                 } else {
-                    canvas.drawText(String.format("Za niska częstotliwość"), 20, 550, this.mTextPaint);
+                    canvas.drawText(String.format("Za niska częstotliwość"), (float)(0.02 * screenWidth), (float)(0.15 * screenHeight), this.mTextPaint);
                 }
             }
-
             }
     }
 

@@ -72,7 +72,7 @@ public final class HarmonicProductSpectrum {
         for (int i = 0; i < spectrum.length; i++) {
             doubles[i] = Math.abs(spectrum[i]);
         }
-        calcHarmonicProductSpectrum(doubles, hps, 1);
+        calcHarmonicProductSpectrum(doubles, hps, 5);
         int maxIndex = 0;
         for (int i = 1; i < hps.length; i++) {
             if (hps[maxIndex] < hps[i])
