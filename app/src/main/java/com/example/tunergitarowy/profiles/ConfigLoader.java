@@ -1,7 +1,10 @@
-package com.example.tunergitarowy;
+package com.example.tunergitarowy.profiles;
 
 import android.content.Context;
 import android.util.Log;
+
+import com.example.tunergitarowy.R;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

@@ -1,17 +1,14 @@
-package com.example.tunergitarowy;
+package com.example.tunergitarowy.activities;
 
 import android.os.Bundle;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.content.pm.PackageManager;
-import android.view.View;
-import android.widget.Button;
 
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.TextView;
+import com.example.tunergitarowy.recording.AudioDataReceivedListener;
+import com.example.tunergitarowy.R;
+import com.example.tunergitarowy.recording.RecordingThread;
 
 public class TunerActivity extends AppCompatActivity {
 

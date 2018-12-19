@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".profileListActivity"
+    tools:context=".activities.profileListActivity"
     tools:listitem="@layout/profile_list_content" />

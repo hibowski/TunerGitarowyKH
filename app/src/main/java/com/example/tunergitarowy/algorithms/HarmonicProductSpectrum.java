@@ -1,7 +1,9 @@
-package com.example.tunergitarowy;
+package com.example.tunergitarowy.algorithms;
 
 
 import android.util.Log;
+
+import com.example.tunergitarowy.recording.RecordingThread;
 
 public final class HarmonicProductSpectrum {
     private static final String LOG_TAG = RecordingThread.class.getSimpleName();

@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.example.tunergitarowy;
+package com.example.tunergitarowy.recording;
 
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -36,6 +36,7 @@ public class RecordingThread {
     }
 
     public void startRecording() {
+
         if (mThread != null)
             return;
 

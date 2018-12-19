@@ -1,4 +1,4 @@
-package com.example.tunergitarowy;
+package com.example.tunergitarowy.activities;
 
 import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -14,6 +14,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+
+import com.example.tunergitarowy.R;
+import com.example.tunergitarowy.profiles.Profile;
+import com.example.tunergitarowy.profiles.TunerApp;
+
 import java.util.ArrayList;
 
 public class profileDetailFragment extends Fragment {

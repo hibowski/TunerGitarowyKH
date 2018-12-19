@@ -6,14 +6,14 @@
 
 
     <application
-        android:name=".TunerApp"
+        android:name=".profiles.TunerApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,26 +21,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TunerActivity"
+            android:name=".activities.TunerActivity"
             android:label="@string/title_activity_tuner"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ProfileSelector"
+            android:name=".activities.ProfileSelector"
             android:label="@string/title_activity_profile_selector"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".profileListActivity"
+            android:name=".activities.profileListActivity"
             android:label="@string/title_profile_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".profileDetailActivity"
+            android:name=".activities.profileDetailActivity"
             android:label="@string/title_profile_detail"
-            android:parentActivityName=".profileListActivity"
+            android:parentActivityName=".activities.profileListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.tunergitarowy.profileListActivity" />
+                android:value="com.example.tunergitarowy.activities.profileListActivity" />
         </activity>
     </application>
 

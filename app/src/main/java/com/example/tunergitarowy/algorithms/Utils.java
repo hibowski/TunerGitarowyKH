@@ -1,4 +1,6 @@
-package com.example.tunergitarowy;
+package com.example.tunergitarowy.algorithms;
+
+import com.example.tunergitarowy.recording.RecordingThread;
 
 public class Utils {
     private static final String LOG_TAG = RecordingThread.class.getSimpleName();

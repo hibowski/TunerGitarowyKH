@@ -1,4 +1,4 @@
-package com.example.tunergitarowy;
+package com.example.tunergitarowy.activities;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,11 +10,16 @@ import android.util.Log;
 import android.graphics.Paint;
 import android.text.TextPaint;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.tunergitarowy.algorithms.HarmonicProductSpectrum;
+import com.example.tunergitarowy.R;
+import com.example.tunergitarowy.recording.RecordingThread;
+import com.example.tunergitarowy.algorithms.Utils;
+
 import pl.pawelkleczkowski.customgauge.CustomGauge;
 
-import static com.example.tunergitarowy.Utils.pitchLetterFromIndex;
+import static com.example.tunergitarowy.algorithms.Utils.pitchLetterFromIndex;
 
 public class TunerView extends View {
     private static final int window_size = 32768;

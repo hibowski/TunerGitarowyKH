@@ -1,17 +1,14 @@
-package com.example.tunergitarowy;
+package com.example.tunergitarowy.profiles;
 
 import android.app.Application;
 import android.util.Log;
 
+import com.example.tunergitarowy.recording.RecordingThread;
+
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
 
 public class TunerApp extends Application{
 
-    // TODO:: zamienic to na List<Profiles>
-    //zrobione
     private ArrayList<Profile> profiles;
 
     public ArrayList<Profile> getProfiles() {
@@ -23,7 +20,8 @@ public class TunerApp extends Application{
     }
 
     public ArrayList<String> getProfilesNames() {
-        ArrayList<String> profilesNames = new ArrayList<String>();
+
+               ArrayList<String> profilesNames = new ArrayList<String>();
 
         for (int i = 0; i<profiles.size(); i++) {
            profilesNames.add(profiles.get(i).getName());
@@ -49,6 +47,4 @@ public class TunerApp extends Application{
         return null;
     }
 
-    //TODO: dodac class Profile -> klasa ktora bedzie przechowywala (String) nazwe i List<Integer> pitch indexy
-    //zrobione
 }

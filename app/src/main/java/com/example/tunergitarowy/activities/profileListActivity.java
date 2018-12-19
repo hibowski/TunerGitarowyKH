@@ -1,4 +1,4 @@
-package com.example.tunergitarowy;
+package com.example.tunergitarowy.activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,13 +10,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.tunergitarowy.profiles.Profile;
+import com.example.tunergitarowy.R;
+import com.example.tunergitarowy.profiles.TunerApp;
+
 import java.util.List;
 
 

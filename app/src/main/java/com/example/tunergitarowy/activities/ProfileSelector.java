@@ -1,4 +1,4 @@
-package com.example.tunergitarowy;
+package com.example.tunergitarowy.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+
+import com.example.tunergitarowy.R;
+import com.example.tunergitarowy.profiles.TunerApp;
+import com.example.tunergitarowy.algorithms.Utils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

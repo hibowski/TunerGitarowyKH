@@ -12,7 +12,7 @@
  * the License.
  */
 
-package com.example.tunergitarowy;
+package com.example.tunergitarowy.recording;
 
 public interface AudioDataReceivedListener {
     void onAudioDataReceived(short[] data);

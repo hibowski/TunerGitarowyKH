@@ -1,4 +1,4 @@
-package com.example.tunergitarowy;
+package com.example.tunergitarowy.profiles;
 
 import java.util.ArrayList;
 
