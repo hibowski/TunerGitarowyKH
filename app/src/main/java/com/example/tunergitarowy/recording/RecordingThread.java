@@ -62,16 +62,8 @@ public class RecordingThread {
         Log.v(LOG_TAG, "Start");
         android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_AUDIO);
 
-        // buffer size in bytes
-        //int bufferSize = AudioRecord.getMinBufferSize(SAMPLE_RATE,
-        //        AudioFormat.CHANNEL_IN_MONO,
-        //        AudioFormat.ENCODING_PCM_16BIT);
-
-        //if (bufferSize == AudioRecord.ERROR || bufferSize == AudioRecord.ERROR_BAD_VALUE) {
-        //    bufferSize = SAMPLE_RATE * 2;
-        //}
-        int bufferSize = 32768 * 2;
-        short[] audioBuffer = new short[bufferSize / 2];
+        int bufferSize = 32768;
+        short[] audioBuffer = new short[bufferSize];
 
         AudioRecord record = new AudioRecord(MediaRecorder.AudioSource.DEFAULT,
                 SAMPLE_RATE,

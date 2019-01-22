@@ -97,15 +97,15 @@ public class TunerView extends View {
             gaugeText.setText(Utils.pitchLetterFromIndex(Utils.frequencyToPitchIndex((float) freq)));
             range = Utils.pitchIndexToFrequency(Utils.frequencyToPitchIndex((float) freq));
             gauge1.setValue(50 - (1000 - ((int) ((freq / range) * 1000))));
-            canvas.drawText(String.format("Obecna częstotliwość: %f Hz", freq), (float)(0.02 * screenWidth), (float)(0.05 * screenHeight), this.mTextPaint);
-            canvas.drawText(String.format("Częstotliwość docelowa dźwięku: %f Hz", range), (float)(0.02 * screenWidth), (float)(0.1 * screenHeight), this.mTextPaint);
+            canvas.drawText(String.format("Obecna częstotliwość: %.1f Hz", freq), (float)(0.02 * screenWidth), (float)(0.05 * screenHeight), this.mTextPaint);
+            canvas.drawText(String.format("Częstotliwość docelowa dźwięku: %.1f Hz", range), (float)(0.02 * screenWidth), (float)(0.1 * screenHeight), this.mTextPaint);
 
 
         }
         else{
                 gaugeText.setText(pitchLetterFromIndex(pitchIndex));
-            canvas.drawText(String.format("Częstotliwość docelowa: %f Hz", range), (float)(0.02 * screenWidth), (float)(0.05 * screenHeight), this.mTextPaint);
-            canvas.drawText(String.format("Obecna częstotliwość: %f Hz", freq), (float)(0.02 * screenWidth), (float)(0.1 * screenHeight), this.mTextPaint);
+            canvas.drawText(String.format("Częstotliwość docelowa: %.1f Hz", range), (float)(0.02 * screenWidth), (float)(0.05 * screenHeight), this.mTextPaint);
+            canvas.drawText(String.format("Obecna częstotliwość: %.1f Hz", freq), (float)(0.02 * screenWidth), (float)(0.1 * screenHeight), this.mTextPaint);
 
 
             if (freq < range * 1.05 && freq > range * 0.95) {
@@ -131,7 +131,7 @@ public class TunerView extends View {
         // done
         freq = hps.CalculateHPS(data);
 
-        Log.i(LOG_TAG, String.format("maxIndex: HZ: %f", freq));
+        Log.i(LOG_TAG, String.format("HZ: %f", freq));
         postInvalidate();
     }
 
