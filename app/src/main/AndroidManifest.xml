@@ -30,17 +30,17 @@
             android:label="@string/title_activity_profile_selector"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.profileListActivity"
+            android:name=".activities.ProfileListActivity"
             android:label="@string/title_profile_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".activities.profileDetailActivity"
+            android:name=".activities.ProfileDetailActivity"
             android:label="@string/title_profile_detail"
-            android:parentActivityName=".activities.profileListActivity"
+            android:parentActivityName=".activities.ProfileListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.tunergitarowy.activities.profileListActivity" />
+                android:value="com.example.tunergitarowy.activities.ProfileListActivity" />
         </activity>
     </application>
 

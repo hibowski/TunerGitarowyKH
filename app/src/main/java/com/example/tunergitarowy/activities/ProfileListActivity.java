@@ -24,7 +24,7 @@ import com.example.tunergitarowy.profiles.TunerApp;
 import java.util.List;
 
 
-public class profileListActivity extends AppCompatActivity {
+public class ProfileListActivity extends AppCompatActivity {
 
     /**
      * zmienna mTwoPane, przechowująca informację czy aplikacja działa na tablecie
@@ -53,7 +53,7 @@ public class profileListActivity extends AppCompatActivity {
                 // TODO:: Dodac profil do listy w recyclerView (setAdapter)
 
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(profileListActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileListActivity.this);
                 builder.setTitle("Nazwa profilu");
 // Set up the input
 
@@ -114,7 +114,7 @@ public class profileListActivity extends AppCompatActivity {
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final profileListActivity mParentActivity;
+        private final ProfileListActivity mParentActivity;
         private final List<Profile> mValues;
         private final boolean mTwoPane;
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -125,23 +125,23 @@ public class profileListActivity extends AppCompatActivity {
                 //TODO: Olac TwoPane?
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(profileDetailFragment.ARG_ITEM_ID, item.getName());
-                    profileDetailFragment fragment = new profileDetailFragment();
+                    arguments.putString(ProfileDetailFragment.ARG_ITEM_ID, item.getName());
+                    ProfileDetailFragment fragment = new ProfileDetailFragment();
                     fragment.setArguments(arguments);
                     mParentActivity.getSupportFragmentManager().beginTransaction()
                             .replace(R.id.profile_detail_container, fragment)
                             .commit();
                 } else {
                     Context context = view.getContext();
-                    Intent intent = new Intent(context, profileDetailActivity.class);
-                    intent.putExtra(profileDetailFragment.ARG_ITEM_ID, item.getName());
+                    Intent intent = new Intent(context, ProfileDetailActivity.class);
+                    intent.putExtra(ProfileDetailFragment.ARG_ITEM_ID, item.getName());
 
                     context.startActivity(intent);
                 }
             }
         };
 
-        SimpleItemRecyclerViewAdapter(profileListActivity parent,
+        SimpleItemRecyclerViewAdapter(ProfileListActivity parent,
                                       List<Profile> items,
                                       boolean twoPane) {
             mValues = items;

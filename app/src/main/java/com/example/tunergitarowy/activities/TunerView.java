@@ -31,6 +31,7 @@ public class TunerView extends View {
     private double freq;
     private int pitchIndex = 0;
 
+
     private Paint mTextPaint;
     private Paint mCircleGoodPaint;
     private Paint mCircleBadPaint;
@@ -53,6 +54,9 @@ public class TunerView extends View {
     public void init(Context context) {
         hps = new HarmonicProductSpectrum();
         samples = new short[window_size];
+//        for (int i=0; i < samples.length; i++){
+//            samples[i] = 0;
+//        }
         mTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setColor(ContextCompat.getColor(context, R.color.colorPrimary));
         mTextPaint.setTextSize(50);
@@ -136,12 +140,14 @@ public class TunerView extends View {
     }
 
     public void transferSamples(short[] data) {
-        if (data.length != window_size) {
-            Log.e(LOG_TAG, "Incoming data doesn't match the window size");
-            Log.e(LOG_TAG, String.format("data length: %d, window_size: %d", data.length, window_size));
-            return;
-        }
-        System.arraycopy(data, 0, samples, 0, window_size);
-        onSampleChange(data);
+//        if (data.length != window_size) {
+//            Log.e(LOG_TAG, "Incoming data doesn't match the window size");
+//            Log.e(LOG_TAG, String.format("data length: %d, window_size: %d", data.length, window_size));
+//            return;
+//        }
+        short[] samples1 = samples;
+        System.arraycopy(samples1, 0, samples, 8192, window_size - 8192);
+        System.arraycopy(data, 0, samples, 0, 8192);
+        onSampleChange(samples);
     }
 }

@@ -15,12 +15,12 @@ public final class HarmonicProductSpectrum {
         this.fft = new FFT(window_size);
     }
 
-    public static void HanningWindow(short[] signal_in, short[] signal_out, int pos, int size)
+    public static void HanningWindow(short[] signal_in, double[] signal_out, int pos, int size)
     {
         for (int i = pos; i < pos + size; i++)
         {
             int j = i - pos; // j = index into Hann window function
-            signal_out[i] = (short) (signal_in[i] * 0.5 * (1.0 - Math.cos(2.0 * Math.PI * j / size)));
+            signal_out[i] =   (signal_in[i] * 0.5 * (1.0 - Math.cos(2.0 * Math.PI * j / size)));
         }
     }
 
@@ -32,9 +32,9 @@ public final class HarmonicProductSpectrum {
         return dest;
     }
 
-    public static void calcHarmonicProductSpectrum(double[] mag, double[] hps, int order) {
+    public static void CalcHarmonicProductSpectrum(double[] mag, double[] hps, int order) {
         if(mag.length != hps.length) {
-            Log.e(LOG_TAG, "calcHarmonicProductSpectrum: mag[] and hps[] have to be of the same length!");
+            Log.e(LOG_TAG, "CalcHarmonicProductSpectrum: mag[] and hps[] have to be of the same length!");
             throw new IllegalArgumentException("mag[] and hps[] have to be of the same length");
         }
 
@@ -64,24 +64,25 @@ public final class HarmonicProductSpectrum {
     public double CalculateHPS(short[] data) {
         short[] samples;
         samples = data;
-        short[] signal_out = new short[window_size];
+        double[] signal_out = new double[window_size];
         double[] spectrum = new double[window_size];
-        double[] hps = new double[window_size];
+        double[] hps = new double[window_size/2];
+        double[] module = new double[window_size/2];
         HanningWindow(samples, signal_out, 0, window_size);
-        double[] doubles = copyFromShortArray(signal_out);
+        double[] doubles = signal_out;
         fft.fft(doubles, spectrum);
 
-        for (int i = 0; i < spectrum.length; i++) {
-            doubles[i] = Math.abs(spectrum[i]);
+        for (int i = 0; i < module.length; i++) {
+            module[i] = Math.sqrt(doubles[i]*doubles[i] + spectrum[i]*spectrum[i]);
         }
-        calcHarmonicProductSpectrum(doubles, hps, 5);
+        CalcHarmonicProductSpectrum(module, hps, 5);
         int maxIndex = 0;
         for (int i = 1; i < hps.length; i++) {
             if (hps[maxIndex] < hps[i])
                 maxIndex = i;
         }
 
-        double freq = ((double) maxIndex / (double) samples.length) * 44100;
+        double freq = ((double) maxIndex / (double) samples.length) * 8192;
 
 
         return freq;

@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startProfileEdit(){
-        Intent intent = new Intent(this, profileListActivity.class);
+        Intent intent = new Intent(this, ProfileListActivity.class);
         startActivity(intent);
     }
 

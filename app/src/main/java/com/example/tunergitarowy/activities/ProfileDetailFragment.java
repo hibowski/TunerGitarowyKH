@@ -21,7 +21,7 @@ import com.example.tunergitarowy.profiles.TunerApp;
 
 import java.util.ArrayList;
 
-public class profileDetailFragment extends Fragment {
+public class ProfileDetailFragment extends Fragment {
     /**
      * Argument fragmentu reprezentujący item ID fragmentu.
      */
@@ -33,7 +33,7 @@ public class profileDetailFragment extends Fragment {
     /**
      * Konstruktor inicjalizujący fragment
      */
-    public profileDetailFragment() {
+    public ProfileDetailFragment() {
     }
 
     @Override

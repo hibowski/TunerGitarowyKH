@@ -21,7 +21,7 @@ import android.util.Log;
 
 public class RecordingThread {
     private static final String LOG_TAG = RecordingThread.class.getSimpleName();
-    private static final int SAMPLE_RATE = 44100;
+    private static final int SAMPLE_RATE = 8192;
 
     public RecordingThread(AudioDataReceivedListener listener) {
         mListener = listener;
@@ -62,7 +62,7 @@ public class RecordingThread {
         Log.v(LOG_TAG, "Start");
         android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_AUDIO);
 
-        int bufferSize = 32768;
+        int bufferSize = 8192;
         short[] audioBuffer = new short[bufferSize];
 
         AudioRecord record = new AudioRecord(MediaRecorder.AudioSource.DEFAULT,

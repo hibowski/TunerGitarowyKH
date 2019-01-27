@@ -10,7 +10,7 @@ import android.widget.Spinner;
 
 import com.example.tunergitarowy.R;
 
-public class profileDetailActivity extends AppCompatActivity {
+public class ProfileDetailActivity extends AppCompatActivity {
 
 
     @Override
@@ -44,9 +44,9 @@ public class profileDetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(profileDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(profileDetailFragment.ARG_ITEM_ID));
-            profileDetailFragment fragment = new profileDetailFragment();
+            arguments.putString(ProfileDetailFragment.ARG_ITEM_ID,
+                    getIntent().getStringExtra(ProfileDetailFragment.ARG_ITEM_ID));
+            ProfileDetailFragment fragment = new ProfileDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.profile_detail_container, fragment)
@@ -66,7 +66,7 @@ public class profileDetailActivity extends AppCompatActivity {
             //
             // TODO: Zapisz zmiany przy wychodzeniu?
             // TODO: Moze osobny jeszcze button do tego?
-            navigateUpTo(new Intent(this, profileListActivity.class));
+            navigateUpTo(new Intent(this, ProfileListActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);
