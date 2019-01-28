@@ -17,10 +17,8 @@ package com.example.tunergitarowy.recording;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
-import android.util.Log;
 
 public class RecordingThread {
-    private static final String LOG_TAG = RecordingThread.class.getSimpleName();
     private static final int SAMPLE_RATE = 8192;
 
     public RecordingThread(AudioDataReceivedListener listener) {
@@ -30,10 +28,6 @@ public class RecordingThread {
     private boolean mShouldContinue;
     private AudioDataReceivedListener mListener;
     private Thread mThread;
-
-    public boolean recording() {
-        return mThread != null;
-    }
 
     public void startRecording() {
 
@@ -59,7 +53,6 @@ public class RecordingThread {
     }
 
     private void record() {
-        Log.v(LOG_TAG, "Start");
         android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_AUDIO);
 
         int bufferSize = 8192;
@@ -72,12 +65,10 @@ public class RecordingThread {
                 bufferSize);
 
         if (record.getState() != AudioRecord.STATE_INITIALIZED) {
-            Log.e(LOG_TAG, "Audio Record can't initialize!");
             return;
         }
         record.startRecording();
 
-        Log.v(LOG_TAG, "Start recording");
 
         long shortsRead = 0;
         while (mShouldContinue) {
@@ -91,6 +82,6 @@ public class RecordingThread {
         record.stop();
         record.release();
 
-        Log.v(LOG_TAG, String.format("Recording stopped. Samples read: %d", shortsRead));
     }
 }
+

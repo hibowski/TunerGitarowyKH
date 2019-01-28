@@ -26,10 +26,6 @@ public class Profile {
         return tones;
     }
 
-    public void setTones(ArrayList<Integer> tones) {
-        this.tones = tones;
-    }
-
     public void addTone(int tone){
         this.tones.add(tone);
     }
@@ -51,3 +47,4 @@ public class Profile {
         this.id = id;
     }
 }
+

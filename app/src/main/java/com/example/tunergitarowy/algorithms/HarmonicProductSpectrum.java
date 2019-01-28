@@ -1,21 +1,15 @@
 package com.example.tunergitarowy.algorithms;
 
-
-import android.util.Log;
-
-import com.example.tunergitarowy.recording.RecordingThread;
-
 public final class HarmonicProductSpectrum {
-    private static final String LOG_TAG = RecordingThread.class.getSimpleName();
+
     private static final int window_size = 32768;
-    private int maxIndex;
     private FFT fft;
 
     public HarmonicProductSpectrum(){
         this.fft = new FFT(window_size);
     }
 
-    public static void HanningWindow(short[] signal_in, double[] signal_out, int pos, int size)
+    private static void HanningWindow(short[] signal_in, double[] signal_out, int pos, int size)
     {
         for (int i = pos; i < pos + size; i++)
         {
@@ -24,19 +18,8 @@ public final class HarmonicProductSpectrum {
         }
     }
 
-    public static double[] copyFromShortArray(short[] source) {
-        double[] dest = new double[source.length];
-        for(int i=0; i<source.length; i++) {
-            dest[i] = source[i];
-        }
-        return dest;
-    }
 
-    public static void CalcHarmonicProductSpectrum(double[] mag, double[] hps, int order) {
-        if(mag.length != hps.length) {
-            Log.e(LOG_TAG, "CalcHarmonicProductSpectrum: mag[] and hps[] have to be of the same length!");
-            throw new IllegalArgumentException("mag[] and hps[] have to be of the same length");
-        }
+    private static void CalcHarmonicProductSpectrum(double[] mag, double[] hps, int order) {
 
         // initialize the hps array
         int hpsLength = mag.length / (order+1);
@@ -64,12 +47,11 @@ public final class HarmonicProductSpectrum {
     public double CalculateHPS(short[] data) {
         short[] samples;
         samples = data;
-        double[] signal_out = new double[window_size];
         double[] spectrum = new double[window_size];
         double[] hps = new double[window_size/2];
         double[] module = new double[window_size/2];
-        HanningWindow(samples, signal_out, 0, window_size);
-        double[] doubles = signal_out;
+        double[] doubles =  new double[window_size];
+        HanningWindow(samples, doubles, 0, window_size);
         fft.fft(doubles, spectrum);
 
         for (int i = 0; i < module.length; i++) {
@@ -82,9 +64,8 @@ public final class HarmonicProductSpectrum {
                 maxIndex = i;
         }
 
-        double freq = ((double) maxIndex / (double) samples.length) * 8192;
+        return ((double) maxIndex / (double) samples.length) * 8192;
 
-
-        return freq;
     }
 }
+

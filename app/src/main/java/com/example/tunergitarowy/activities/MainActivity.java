@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
                 startTuner();
             }
         });
-        // TODO ZMIENIĆ POKAZYWANE WARTOŚCI
 
 
         // Load config

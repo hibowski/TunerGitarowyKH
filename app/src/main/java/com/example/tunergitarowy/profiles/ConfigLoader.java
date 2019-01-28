@@ -1,7 +1,6 @@
 package com.example.tunergitarowy.profiles;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.example.tunergitarowy.R;
 
@@ -19,8 +18,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ConfigLoader {
-
-    private static final String LOG_TAG = ConfigLoader.class.getSimpleName();
 
     public static ArrayList<Profile> loadConfig(Context context) throws Exception {
         File directory = context.getFilesDir();
@@ -50,7 +47,6 @@ public class ConfigLoader {
                 JSONObject jsonObject = profilesArray.getJSONObject(i);
 
                 String profileName = jsonObject.getString("name");
-                Log.i(LOG_TAG, "Profile name: " + profileName);
                 JSONArray pithIndexes = jsonObject.getJSONArray("pitchIndexes");
                 Profile profile = new Profile(i + 1, profileName);
                 int[] indexes = new int[pithIndexes.length()];
@@ -59,10 +55,8 @@ public class ConfigLoader {
                     indexes[j] = pithIndexes.optInt(j);
                     profile.addTone(indexes[j]);
                 }
-                Log.i(LOG_TAG, "Pitch indexes: " + Arrays.toString(indexes));
                 profiles.add(profile);
             }
-            Log.i(LOG_TAG, "Config loaded: " + jsonString);
             return profiles;
         } catch (JSONException je) {
             je.printStackTrace();

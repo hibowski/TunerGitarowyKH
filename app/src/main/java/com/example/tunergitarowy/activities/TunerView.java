@@ -54,9 +54,6 @@ public class TunerView extends View {
     public void init(Context context) {
         hps = new HarmonicProductSpectrum();
         samples = new short[window_size];
-//        for (int i=0; i < samples.length; i++){
-//            samples[i] = 0;
-//        }
         mTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setColor(ContextCompat.getColor(context, R.color.colorPrimary));
         mTextPaint.setTextSize(50);
@@ -71,7 +68,6 @@ public class TunerView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        // TODO: Rysowanie interfejsu
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE); // the results will be higher than using the activity context object or the getWindowManager() shortcut
@@ -101,15 +97,15 @@ public class TunerView extends View {
             gaugeText.setText(Utils.pitchLetterFromIndex(Utils.frequencyToPitchIndex((float) freq)));
             range = Utils.pitchIndexToFrequency(Utils.frequencyToPitchIndex((float) freq));
             gauge1.setValue(50 - (1000 - ((int) ((freq / range) * 1000))));
-            canvas.drawText(String.format("Obecna częstotliwość: %.1f Hz", freq), (float)(0.02 * screenWidth), (float)(0.05 * screenHeight), this.mTextPaint);
-            canvas.drawText(String.format("Częstotliwość docelowa dźwięku: %.1f Hz", range), (float)(0.02 * screenWidth), (float)(0.1 * screenHeight), this.mTextPaint);
+            canvas.drawText(String.format("Obecna częstotliwość: %.2f Hz", freq), (float)(0.02 * screenWidth), (float)(0.05 * screenHeight), this.mTextPaint);
+            canvas.drawText(String.format("Częstotliwość docelowa dźwięku: %.2f Hz", range), (float)(0.02 * screenWidth), (float)(0.1 * screenHeight), this.mTextPaint);
 
 
         }
         else{
                 gaugeText.setText(pitchLetterFromIndex(pitchIndex));
-            canvas.drawText(String.format("Częstotliwość docelowa: %.1f Hz", range), (float)(0.02 * screenWidth), (float)(0.05 * screenHeight), this.mTextPaint);
-            canvas.drawText(String.format("Obecna częstotliwość: %.1f Hz", freq), (float)(0.02 * screenWidth), (float)(0.1 * screenHeight), this.mTextPaint);
+            canvas.drawText(String.format("Częstotliwość docelowa: %.2f Hz", range), (float)(0.02 * screenWidth), (float)(0.05 * screenHeight), this.mTextPaint);
+            canvas.drawText(String.format("Obecna częstotliwość: %.2f Hz", freq), (float)(0.02 * screenWidth), (float)(0.1 * screenHeight), this.mTextPaint);
 
 
             if (freq < range * 1.05 && freq > range * 0.95) {
