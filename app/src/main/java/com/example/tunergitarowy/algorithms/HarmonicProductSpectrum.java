@@ -36,10 +36,10 @@ public final class HarmonicProductSpectrum {
             for (int index = 0; index < hpsLength; index++) {
                 // Calculate the average (downsampling):
                 float avg = 0;
-                for (int i = 0; i < downsamplingFactor; i++) {
-                    avg += mag[index*downsamplingFactor + i];
-                }
-                hps[index] += avg / downsamplingFactor;
+
+                avg += mag[index*downsamplingFactor];
+
+                hps[index] *= avg;
             }
         }
     }

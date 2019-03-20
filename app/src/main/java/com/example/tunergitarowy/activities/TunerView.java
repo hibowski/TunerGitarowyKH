@@ -136,11 +136,7 @@ public class TunerView extends View {
     }
 
     public void transferSamples(short[] data) {
-//        if (data.length != window_size) {
-//            Log.e(LOG_TAG, "Incoming data doesn't match the window size");
-//            Log.e(LOG_TAG, String.format("data length: %d, window_size: %d", data.length, window_size));
-//            return;
-//        }
+
         short[] samples1 = samples;
         System.arraycopy(samples1, 0, samples, 8192, window_size - 8192);
         System.arraycopy(data, 0, samples, 0, 8192);

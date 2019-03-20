@@ -50,24 +50,20 @@ public class ProfileListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO:: Dodac profil do listy w recyclerView (setAdapter)
+
 
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(ProfileListActivity.this);
                 builder.setTitle("Nazwa profilu");
-// Set up the input
+
 
                 final EditText input = new EditText(getApplicationContext());
 
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 builder.setView(input);
 
-                //TextViewCompat.setTextAppearance((input.getText().toString()), android.R.style.TextAppearance_Medium);
 
-                //R.style.AppTheme
-
-// Set up the buttons
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -90,17 +86,12 @@ public class ProfileListActivity extends AppCompatActivity {
                 });
 
                 builder.show();
-               // Snackbar.make(view, "Utworzono nowy profil", Snackbar.LENGTH_LONG)
-               //         .setAction("Action", null).show();
+
             }
         });
 
         if (findViewById(R.id.profile_detail_container) != null) {
-            // The detail container view will be present only in the
-            // large-screen layouts (res/values-w900dp).
-            // If this view is present, then the
-            // activity should be in two-pane mode.
-            //mTwoPane = true;
+
         }
         mTwoPane = false;
 
